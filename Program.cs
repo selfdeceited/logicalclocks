@@ -1,3 +1,3 @@
-﻿new LogicalClock().StartMagic();
+﻿new ScalarClockEmulator().StartSequence();
 
 Console.ReadKey();
