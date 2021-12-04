@@ -1,18 +1,24 @@
-here be ~~dragons~~ examples to implement Logical Clock from this [magical book](https://www.amazon.com/Distributed-Systems-Maarten-van-Steen/dp/1543057381)
+# Description
+Here be ~~dragons~~ examples to implement Logical Clock from this [magical book](https://www.amazon.com/Distributed-Computing-Principles-Algorithms-Systems/dp/0521189845)
 
 I use RX.NET to mimic a distributed system.
 
 Code's ugly, welp, but what else is new
 
-### Scalar Clock
+## Scalar Clock
 #### Model
- - Two processes, one streams 'even' events, one 'uneven'.
- - Each process have a 50% chance to publish an event to another
+ - Three processes, streaming events with twisted timestamps (like from other machines)
+ - Each process have a 50% chance to publish an event to another. You can control the amount of republishing you want to happen.
 
- - Proving that eventual consistency happens
- - Proving no causal consistency will happen
+ - Eventual consistency happens
+ - No causal consistency happens
 
-TODO: avoid republishing
+![scalar.png](https://miro.medium.com/max/1400/1*X0mQTqfgj06XV8jkHg6Fbg.png)
 
-### Vector Clocks
+## Vector Clocks
 TBD
+
+![vector.png](https://miro.medium.com/max/1064/1*xvQm1wP0v0eSmp3pnuIbEA.png)
+
+## NB
+Also need to think how to visualize this stuff. Maybe interactive console?

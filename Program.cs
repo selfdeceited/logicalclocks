@@ -1,5 +1,4 @@
-﻿
-const int REPUBLISHING_LEVEL = 1;
+﻿const int REPUBLISHING_LEVEL = 1;
 
 var scalarSubjects = new List<ScalarClockSubject>{
     new ScalarClockSubject("first", REPUBLISHING_LEVEL),

@@ -28,7 +28,7 @@ public class ClockEmulator
             .Select(i => new Event<T>(
                 new object().GetHashCode(),
                 defaultClockValue,
-                new[] {"original"},
+                new[] { "original" }, // geez I want discriminated unions to happen
                 i.Timestamp.DateTime))
             .Select(e => e.WithTimestamp(e.Timestamp.Add(jitter)));
 
