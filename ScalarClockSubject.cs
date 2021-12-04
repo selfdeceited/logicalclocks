@@ -50,9 +50,7 @@ public class ScalarClockSubject: ISubject<Event<int>>
         if (e.Origins.Count() > _republishingLevel)
             return;
         
-        var eventToPublish = e
-            .From(Name)
-            .SetLocalClock(LocalClock);
+        var eventToPublish = e.From(Name).WithLocalClock(LocalClock);
 
         foreach (var observer in observers)
         {
@@ -79,6 +77,7 @@ public class ScalarClockSubject: ISubject<Event<int>>
         observers.Add(observer);
         return new Subscription();
     }
+
     internal class Subscription : IDisposable
     {
         public void Dispose() { }
