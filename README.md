@@ -18,5 +18,7 @@ I use RX.NET to mimic a distributed system. Code's ugly, yeah well what else is 
 
 ![vector.png](https://miro.medium.com/max/1064/1*xvQm1wP0v0eSmp3pnuIbEA.png)
 
-## NB
-Also need to think how to visualize this stuff. Maybe interactive console?
+## TODO
+ - Implement Singhal–Kshemkalyani’s differential technique
+ - Implement Fowler-Zwaenepoel direct-dependency technique
+ - Also need to think how to visualize this stuff. Maybe interactive console?
