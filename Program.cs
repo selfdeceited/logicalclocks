@@ -1,11 +1,20 @@
 ﻿const int REPUBLISHING_LEVEL = 1;
 
-var scalarSubjects = new List<ScalarClockSubject>{
-    new ScalarClockSubject("first", REPUBLISHING_LEVEL),
-    new ScalarClockSubject("second", REPUBLISHING_LEVEL),
-    new ScalarClockSubject("third", REPUBLISHING_LEVEL),
-}.Cast<ISubject<Event<int>>>().ToList();
+var emulator = new ClockEmulator();
+var subjectNames = new List<string> { "P1", "P2", "P3" };
 
-new ClockEmulator().StartSequence<int>(scalarSubjects);
+
+var scalarSubjects = subjectNames.Select(name => new ScalarClockSubject(name, REPUBLISHING_LEVEL));
+emulator.StartSequence<int>(
+    subjects: scalarSubjects.Cast<ISubject<Event<int>>>().ToList(),
+    defaultClockValue: -1);
+
+var emptyVector = new Vector(subjectNames.ToDictionary(name => name, _ => 0));
+var vectorSubjects = subjectNames.Select(name => new VectorClockSubject(name, REPUBLISHING_LEVEL, emptyVector.DeepClone()));
+
+emulator.StartSequence<Vector>(
+    subjects: vectorSubjects.Cast<ISubject<Event<Vector>>>().ToList(),
+    defaultClockValue: emptyVector.DeepClone()
+);
 
 Console.ReadKey();

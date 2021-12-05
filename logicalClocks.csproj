@@ -13,6 +13,7 @@
   <ItemGroup>
     <Using Include="System.Reactive" />
     <Using Include="System.Text.Json" />
+    <Using Include="System.Collections.Generic" />
     <Using Include="System.Reactive.Linq" />
     <Using Include="System.Reactive.Subjects" />
   </ItemGroup>

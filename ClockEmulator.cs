@@ -2,8 +2,7 @@ public class ClockEmulator
 {
     private static readonly Random Random = new Random();
     
-    public void StartSequence<T>(List<ISubject<Event<T>>> subjects)
-         where T: struct
+    public void StartSequence<T>(List<ISubject<Event<T>>> subjects, T defaultClockValue)
     {
         // subscribe to each other
         foreach (var subject in subjects)
@@ -11,12 +10,12 @@ public class ClockEmulator
                 if (subject != other)
                     subject.Subscribe(other);
 
+        
         // subscribe to its own data flow
-        subjects.ForEach(subject => GetFlow<T>().Subscribe(subject));
+        subjects.ForEach(subject => GetFlow<T>(defaultClockValue).Subscribe(subject));
     }
     
-    private static IObservable<Event<T>> GetFlow<T>(T defaultClockValue = default, TimeSpan? clockJitter = null)
-         where T: struct
+    private static IObservable<Event<T>> GetFlow<T>(T defaultClockValue, TimeSpan? clockJitter = null)
     {
         // let's go with persistent shift by now
         var jitter = clockJitter ?? GetDefaultJitter();
